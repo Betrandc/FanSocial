@@ -22,13 +22,24 @@ class _ItemsListState extends State<ItemsList> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                         Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: SizedBox(
+                    child: Row(
                   
+                      children:const [
+                        Text("Browse",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 27),),
+                     
+                      ],
+                    ),
+                  ),
+                ),
                     Card(
                       color: Colors.black,
                       child: Container(
                         margin: EdgeInsets.only(left: 20,right: 20,bottom: 10),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
-                  color: Color.fromARGB(255, 104, 103, 103).withOpacity(0.4)
+                  color:Color.fromARGB(255, 104, 103, 103).withOpacity(0.4) 
                 
                   ),
                   child: TextField(decoration: InputDecoration(
@@ -69,27 +80,26 @@ class _ItemsListState extends State<ItemsList> {
   Widget cardListItems(String name,occupation, int amount, String img){ 
     return Container(
       margin: const EdgeInsets.only(left: 10),
-      child: Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-          GestureDetector(
-            onTap: (){
-         navigationFunction(context, SpecificPerson());
-            },
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(img,width: 130,height: 170,fit: BoxFit.fill,)),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top:8.0),
-            child: Text(name,style: TextStyle(color: Colors.white),),
-          ),
-          Text(occupation,style: const TextStyle(color: Colors.white),),
-          Text("${amount.toString()} XAF",style:const TextStyle(color: Colors.white),)
-        ],),
-      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          
+        GestureDetector(
+          onTap: (){
+       navigationFunction(context, SpecificPerson());
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset(img,width: 130,height: 170,fit: BoxFit.fill,)),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top:8.0),
+          child: Text(name,style: TextStyle(color: Colors.white),),
+        ),
+        Text(occupation,style: const TextStyle(color: Colors.white),),
+        Text("${amount.toString()} XAF",style:const TextStyle(color: Colors.white),)
+      ],),
     );
   }
 
@@ -98,9 +108,9 @@ class _ItemsListState extends State<ItemsList> {
  Widget horizontalSCrollingOfItems(String img){
     return SizedBox(
       height: 270,
-      width: MediaQuery.of(context).size.width,
+      // width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-        shrinkWrap: true,
+        shrinkWrap: false,
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) => cardListItems("Jean Marie","Programmer",1200, img)),
@@ -122,10 +132,10 @@ class _ItemsListState extends State<ItemsList> {
                                   
                                   cardListItemsTitle("New&Noteworthy", "see all"),
                                 // cardListItems(),
-                                 Padding(
-                                   padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                   child: horizontalSCrollingOfItems('Assets/Images/p2 (2).jpg'),
-                                 ),
+                                //  Padding(
+                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                //    child: horizontalSCrollingOfItems('Assets/Images/p2 (2).jpg'),
+                                //  ),
 
 
                                 //   cardListItemsTitle("For Business", "see all"),

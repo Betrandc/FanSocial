@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled/Screens/ChatPage.dart';
 import 'package:untitled/Screens/Following.dart';
 import 'package:untitled/Screens/ItemsPage.dart';
+import 'package:untitled/Screens/Profile.dart';
 
 import './Bottomnavigator.dart';
 
@@ -16,16 +17,16 @@ class UserDashboard extends StatelessWidget {
 ItemsList(),
 Inbox(),
 Following(),
-Following(),
+Profile()
 
   ];
-  List pageTitle = const ["Browse", "Inbox", "Following","Profile"];
+  // List pageTitle = const ["Browse", "Inbox", "Following","Profile"];
 
   final ValueNotifier<int> pageindex = ValueNotifier(0);
   final ValueNotifier<String> titlepage = ValueNotifier("Browse");
 
   void pagenameHandler(index) {
-    titlepage.value = pageTitle[index];
+    // titlepage.value = pageTitle[index];
     pageindex.value = index;
   }
 
@@ -50,17 +51,7 @@ Following(),
                     mainAxisAlignment: MainAxisAlignment.start,
             children: [
               
-               ValueListenableBuilder(
-                  valueListenable: titlepage,
-                  builder: (BuildContext context, String value, _) {
-                    return Padding(
-                     padding: const EdgeInsets.only(left:18.0,top: 38.0,bottom: 20.0),
-                      child: Text(
-                        value,
-                       style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22),
-                      ),
-                    );
-                  }),
+           
               SizedBox(
                  height: deviceheight-(deviceheight/4),
           width: devicewidth,

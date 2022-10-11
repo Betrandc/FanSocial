@@ -569,10 +569,13 @@ bool volumeState =false;
 
       decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(12),
+      border: Border.all(
+        color: Color.fromARGB(255, 104, 103, 103)
+      )
 
-        border: Border.all(
-          color: islogin? const Color.fromARGB(255, 104, 103, 103).withOpacity(0.6):Colors.white,
-        )
+        // border: Border.all(
+        //   color: islogin? const Color.fromARGB(255, 104, 103, 103).withOpacity(0.6):Colors.white,
+        // )
       ),
             child: TextFormField(
               

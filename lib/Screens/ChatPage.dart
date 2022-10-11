@@ -11,20 +11,37 @@ class Inbox extends StatelessWidget {
       backgroundColor:Colors.black,
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 10,vertical: 5),
-      height:deviceheight/7 ,
+      height:deviceheight ,
       // width: devicewidth,
-      child: Card(
-             color: Color.fromARGB(255, 36, 35, 35), 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: const Text("Chat with favorite celebrities",style: TextStyle(     color: Colors.white, ),),
-           ),
-          const  Text("just click on profile to chate or ",style: TextStyle(     color: Color.fromARGB(255, 68, 68, 68), ),),
-           const Text("find more people",style: TextStyle(     color: Color.fromARGB(255, 65, 64, 64), ),),
-            InkWell(
+      child: Column(
+         mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+                 Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: SizedBox(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children:const [
+                        Text("Inbox",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 27),),
+                        Icon(Icons.notification_add,color: Colors.white,),
+                      ],
+                    ),
+                  ),
+                ),
+
+
+            Card(
+               color: Color.fromARGB(255, 36, 35, 35), 
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    const Padding(
+                       padding:  EdgeInsets.all(8.0),
+                       child:  Text("Chat with favorite celebrities",style: TextStyle(     color: Colors.white, ),),
+                     ),
+                    const  Text("just click on profile to chate or ",style: TextStyle( color: Color.fromARGB(255, 100, 99, 99), ),),
+                     const Text("find more people",style: TextStyle(     color: Color.fromARGB(255, 100, 99, 99), ),),
+                      InkWell(
               onTap: (){},
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -33,9 +50,11 @@ class Inbox extends StatelessWidget {
                   Icon(Icons.start,color: Colors.pink,)
                 ],
               ),
+                      )
+                ],
+              ),
             )
-          ],
-        ),
+        ],
       ),
     ),);
   }
