@@ -11,16 +11,18 @@ class ItemsList extends StatefulWidget {
 class _ItemsListState extends State<ItemsList> {
   @override
   Widget build(BuildContext context) {
+    final double deviceheight=MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.black,
           
               body: SizedBox(
-              
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                height: deviceheight,
+                child: ListView(
+                  // crossAxisAlignment: CrossAxisAlignment.start,
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  // mainAxisSize: MainAxisSize.max,
                   children: [
                          Padding(
                   padding: const EdgeInsets.all(18.0),
@@ -50,7 +52,11 @@ class _ItemsListState extends State<ItemsList> {
                 ) ,
                     ),
 
-                   VerticalScrollingItemList()
+                   VerticalScrollingItemList(deviceheight),
+                   SizedBox(
+                    height: deviceheight/3,
+                    width: deviceheight,
+                   )
                   ],
                 ),
               ),
@@ -107,7 +113,7 @@ class _ItemsListState extends State<ItemsList> {
 
  Widget horizontalSCrollingOfItems(String img){
     return SizedBox(
-      height: 270,
+      height: 250,
       // width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         shrinkWrap: false,
@@ -117,106 +123,109 @@ class _ItemsListState extends State<ItemsList> {
     );
   }
   
- Widget VerticalScrollingItemList() {
-    return  Expanded(
-                      child: SingleChildScrollView(
-                        child: Column(children: [
-                                
-                                cardListItemsTitle("Features", "see all"),
-                                // cardListItems(),
-                                 Padding(
-                                   padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                   child: horizontalSCrollingOfItems('Assets/Images/patient.jpg'),
-                                 ),
-
+ Widget VerticalScrollingItemList(deviceheight) {
+    return  Container(
+      height: deviceheight,
+      child: Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(children: [
                                   
-                                  cardListItemsTitle("New&Noteworthy", "see all"),
-                                // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p2 (2).jpg'),
-                                //  ),
+                                  cardListItemsTitle("Features", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/patient.jpg'),
+                                   ),
+
+                                    
+                                    cardListItemsTitle("New&Noteworthy", "see all"),
+                                  
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p2 (2).jpg'),
+                                   ),
 
 
-                                //   cardListItemsTitle("For Business", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
-                                //  ),
+                                    cardListItemsTitle("For Business", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
+                                   ),
 
-                                //   cardListItemsTitle("Actors", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
-                                //  ),
+                                    cardListItemsTitle("Actors", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
+                                   ),
 
-                                //   cardListItemsTitle("Commedians", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/complaint.jpg'),
-                                //  ),
-                                //   cardListItemsTitle("Animal", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
-                                //  ),
-
-
-                                //  cardListItemsTitle("Back for more", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/patient.jpg'),
-                                //  ),
+                                    cardListItemsTitle("Commedians", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/complaint.jpg'),
+                                   ),
+                                    cardListItemsTitle("Animal", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
+                                   ),
 
 
-                                //   cardListItemsTitle("Reality TV", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
-                                //  ),
+                                   cardListItemsTitle("Back for more", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/patient.jpg'),
+                                   ),
 
 
-                                //   cardListItemsTitle("Athletes", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
-                                //  ),
+                                    cardListItemsTitle("Reality TV", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
+                                   ),
+
+
+                                    cardListItemsTitle("Athletes", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
+                                   ),
 
 
 
-                                //   cardListItemsTitle("Musicians", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p2 (2).jpg'),
-                                //  ),
+                                    cardListItemsTitle("Musicians", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p2 (2).jpg'),
+                                   ),
 
 
-                                //   cardListItemsTitle("Queer Voices", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
-                                //  ),
+                                    cardListItemsTitle("Queer Voices", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
+                                   ),
 
 
-                                //   cardListItemsTitle("Creators", "see all"),
-                                // // cardListItems(),
-                                //  Padding(
-                                //    padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                //    child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
-                                //  ),
+                                    cardListItemsTitle("Creators", "see all"),
+                                  // cardListItems(),
+                                   Padding(
+                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
+                                     child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
+                                   ),
 
-                        ],),
+                          ],),
+                        ),
                       ),
-                    );
+    );
 
   }
 }

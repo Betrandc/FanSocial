@@ -47,19 +47,22 @@ Profile()
           height: deviceheight,
           width: devicewidth,
           child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              //       mainAxisAlignment: MainAxisAlignment.start,
+              //       mainAxisSize: MainAxisSize.max,
             children: [
               
            
-              SizedBox(
-                 height: deviceheight-(deviceheight/4),
-          width: devicewidth,
-                child: ValueListenableBuilder(
-                  valueListenable: pageindex,
-                  builder: (context, int value, _) {
-                    return pages[value];
-                  },
+              SafeArea(
+                child: SizedBox(
+                   height: deviceheight-(deviceheight/8),
+                        width: devicewidth,
+                  child: ValueListenableBuilder(
+                    valueListenable: pageindex,
+                    builder: (context, int value, _) {
+                      return pages[value];
+                    },
+                  ),
                 ),
               ),
             ],

@@ -17,7 +17,7 @@ class NavigationBarItems extends StatelessWidget {
   final bool isSelected;
   final ValueChanged<int> onTap;
 
- final TextEditingController _momoController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
