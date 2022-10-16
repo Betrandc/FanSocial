@@ -90,6 +90,8 @@ class BottomNavigation extends StatefulWidget {
 
 class _BottomNavigationState extends State<BottomNavigation> {
   var selectedIndex = 0;
+bool _isfavouriteTap= false;
+
   void handleItemSelected(int index) {
     setState(() {
       selectedIndex = index;
@@ -114,7 +116,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               children: [
                 NavigationBarItems(
                   lable: "Browse",
-                  icon: Icons.search,
+                 img: "Assets/Images/searchmain.png",
                   index: 0,
                   isSelected: (selectedIndex == 0),
                   onTap: handleItemSelected,
@@ -122,24 +124,31 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 ),
                 NavigationBarItems(
                   lable: "inbox",
-                  icon: Icons.message,
+                 img: "Assets/Images/inbox.png",
                   index: 1,
                   isSelected: (selectedIndex == 1),
                   onTap: handleItemSelected,
           
                 ),
-                NavigationBarItems(
-                  lable: "following",
-                  icon: Icons.notification_add,
-                  index: 2,
-                  isSelected: (selectedIndex == 2),
-                  onTap: handleItemSelected,
-               
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      _isfavouriteTap=!_isfavouriteTap;
+                    });
+                  },
+                  child: NavigationBarItems(
+                    lable: "following",
+                    img:"Assets/Images/favorite2.png",
+                    index: 2,
+                    isSelected: (selectedIndex == 2),
+                    onTap: handleItemSelected,
+                               
+                  ),
                 ),
 
                 NavigationBarItems(
                     lable: "profile",
-                    icon: Icons.person,
+                    img: "Assets/Images/fansocialreal.png",
                     index: 3,
                     isSelected: (selectedIndex == 3),
                     onTap: handleItemSelected

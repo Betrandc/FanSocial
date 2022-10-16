@@ -2,9 +2,9 @@
     package="com.example.betrandcliff">
 <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="Jc-school"
+        android:label="FanSocial"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icons">
         <activity
             android:name=".MainActivity"
             android:exported="true"

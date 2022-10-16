@@ -2,7 +2,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/Screens/Dashboard.dart';
 import 'package:video_player/video_player.dart';
 import 'Screens/Login.dart';
@@ -30,12 +30,60 @@ class MyApp extends StatelessWidget {
         //   backgroundColor: Colors.transparent,
         //   title:const ))),
 
-        body:  const MyWelcome(),
+        body:  SplashScreen(),
       ),
     );
   }
 }
+ var SplashTextScren =GoogleFonts.medulaOne(
+    fontSize:35,
+    color:Colors.white,
+    fontWeight: FontWeight.bold,
+    decoration:TextDecoration.none,
+    
+    letterSpacing: 2,
+  );
 
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+ 
+  
+delayFunction() async{
+  await Future.delayed(Duration(milliseconds: 9000),(){
+   Navigator.pushReplacement(context, MaterialPageRoute(builder: (Context)=>MyWelcome()));
+  });
+}
+
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    delayFunction();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return  SafeArea(child: Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Text("FanSocial",style: GoogleFonts.medulaOne(
+    fontSize:35,
+    color:Colors.white,
+    fontWeight: FontWeight.bold,
+    decoration:TextDecoration.none,
+    
+    letterSpacing: 2,
+  ),
+      ),
+    )));
+  }
+}
 
 
 class MyWelcome extends StatefulWidget {
@@ -56,13 +104,13 @@ class _MyWelcomeState extends State<MyWelcome> {
   bool istimerText =false;
 late  VideoPlayerController _controller;
 
-delayFunction() async{
-  await Future.delayed(Duration(milliseconds: 1000),(){
-    setState(() {
-      istimerText=true;
-    });
-  });
-}
+// delayFunction() async{
+//   await Future.delayed(Duration(milliseconds: 9000),(){
+//     setState(() {
+//       istimerText=true;
+//     });
+//   });
+// }
  
 
 @override
@@ -72,7 +120,8 @@ delayFunction() async{
     )
     
     ..initialize().then((_){
-  
+        _controller.play();
+        _controller.setVolume(0.0);
       _controller.setLooping(true);
       setState(() {
         
@@ -82,7 +131,7 @@ delayFunction() async{
       setState(() {});
     });
     });
-    delayFunction();
+    // delayFunction();
     super.initState();
   
   }
@@ -127,9 +176,10 @@ bool volumeState =false;
 
               Positioned(
             top: deviceheight/12,
-            left: devicewidth/3+50,
+            left: devicewidth/4+30,
+            // right:devicewidth/3+50 ,
 
-            child: const Center(child:  Text("Cameo",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 22)))),
+            child: Center(child: Text("FanSocial",style: SplashTextScren,))),
 
           Container(margin: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
@@ -170,7 +220,7 @@ bool volumeState =false;
               const  Padding(
                  padding: EdgeInsets.only(top:38.0,bottom: 18.0),
                  child: Center(
-                  child: Text("VIP invite",style: TextStyle(fontSize: 15,color: Colors.white),),
+                  child: Text("VIP invite",style: TextStyle(fontSize: 15,color: Colors.white,decoration: TextDecoration.none),),
                  ),
                )
             
@@ -188,7 +238,7 @@ bool volumeState =false;
         width: 120,
             decoration: BoxDecoration(
               
-                color: Color.fromARGB(255, 132, 84, 209),
+                color: Color(0xFF8036e1),
               borderRadius: BorderRadius.circular(25)
             ),
           
@@ -380,7 +430,7 @@ bool volumeState =false;
             width: double.infinity,
 
             decoration: BoxDecoration(
-              color:Colors.pink,
+              color:Color(0xFFb20257),
               borderRadius: BorderRadius.circular(15)),
             
             child: MaterialButton(onPressed: (){},child: const Text("Next",style: TextStyle(color: Colors.white)))),

@@ -53,10 +53,7 @@ class _ItemsListState extends State<ItemsList> {
                     ),
 
                    VerticalScrollingItemList(deviceheight),
-                   SizedBox(
-                    height: deviceheight/3,
-                    width: deviceheight,
-                   )
+                 
                   ],
                 ),
               ),
@@ -221,7 +218,10 @@ class _ItemsListState extends State<ItemsList> {
                                      padding: const EdgeInsets.only(left:15.0,bottom: 10),
                                      child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
                                    ),
-
+                                    SizedBox(
+                    height: deviceheight/4,
+                    width: deviceheight,
+                   )
                           ],),
                         ),
                       ),

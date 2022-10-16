@@ -135,6 +135,7 @@ bool displayLength=false;
 
                   cardListItemsTitle("Review", "see all 25"),
                   reviewList(),
+                  reviewList(),
                  const Align(
                     alignment: Alignment.bottomLeft,
                     child: Padding(
@@ -178,7 +179,7 @@ bool displayLength=false;
                         },
                         child:const Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text("see short",style: TextStyle(color: Colors.blue),),
+                          child: Text("see less",style: TextStyle(color: Colors.blue),),
                         )),
                          
                   ],
@@ -281,10 +282,7 @@ bool displayLength=false;
   }
 
  Widget reviewList(){
-   return ListView.builder(
-     shrinkWrap: true,
-     itemCount: 2,
-     itemBuilder: (context,index)=>Container(
+   return Container(
         margin:const EdgeInsets.only(left: 20,right: 20,bottom: 10),
    decoration: BoxDecoration(
      color: Color.fromARGB(255, 29, 28, 28),
@@ -326,7 +324,7 @@ bool displayLength=false;
            ],
          ),
        ),
-     ));
+     );
   }
 
 Widget singleSearch(String occupation,double width){
