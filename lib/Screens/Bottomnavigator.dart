@@ -5,6 +5,7 @@ class NavigationBarItems extends StatelessWidget {
     Key? key,
     required this.lable,
      required this.img,
+     required this.img2,
     required this.index,
     this.isSelected = false,
     required this.onTap,
@@ -18,6 +19,7 @@ class NavigationBarItems extends StatelessWidget {
   final bool isSelected;
   final ValueChanged<int> onTap;
   String img;
+  String img2;
 
 
 
@@ -60,7 +62,7 @@ class NavigationBarItems extends StatelessWidget {
             
             Stack(children:[ 
                
-               Image.asset(img,width: 30,color:!isSelected?  Color.fromARGB(255, 104, 103, 103): Colors.white,),
+               Image.asset(!isSelected?img:img2,width: 30,color:!isSelected?  Color.fromARGB(255, 104, 103, 103): Colors.white,),
               if(lable=="inbox")  
                  Padding(
                    padding: const EdgeInsets.only(left:18.0,bottom:7),

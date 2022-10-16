@@ -44,7 +44,9 @@ class _ItemsListState extends State<ItemsList> {
                   color:Color.fromARGB(255, 104, 103, 103).withOpacity(0.4) 
                 
                   ),
-                  child: TextField(decoration: InputDecoration(
+                  child: TextField(
+                    decoration: InputDecoration(
+                    
                     prefixIcon: IconButton(icon: Icon(Icons.search,color: Colors.white,),onPressed: (){},),
                     border: InputBorder.none,
                     

@@ -116,39 +116,37 @@ bool _isfavouriteTap= false;
               children: [
                 NavigationBarItems(
                   lable: "Browse",
-                 img: "Assets/Images/searchmain.png",
+                 img: "Assets/Images/onsearch.png",
+                 img2:"Assets/Images/onbrowse.png" ,
                   index: 0,
                   isSelected: (selectedIndex == 0),
                   onTap: handleItemSelected,
                  
                 ),
+                
                 NavigationBarItems(
                   lable: "inbox",
-                 img: "Assets/Images/inbox.png",
+                 img: "Assets/Images/message.png",
+                 img2:"Assets/Images/onmessage.png",
                   index: 1,
                   isSelected: (selectedIndex == 1),
                   onTap: handleItemSelected,
           
                 ),
-                InkWell(
-                  onTap: (){
-                    setState(() {
-                      _isfavouriteTap=!_isfavouriteTap;
-                    });
-                  },
-                  child: NavigationBarItems(
-                    lable: "following",
-                    img:"Assets/Images/favorite2.png",
-                    index: 2,
-                    isSelected: (selectedIndex == 2),
-                    onTap: handleItemSelected,
-                               
-                  ),
+                NavigationBarItems(
+                  lable: "following",
+                  img:"Assets/Images/favorite2.png",
+                  img2: "Assets/Images/onlike.png",
+                  index: 2,
+                  isSelected: (selectedIndex == 2),
+                  onTap: handleItemSelected,
+                             
                 ),
 
                 NavigationBarItems(
                     lable: "profile",
                     img: "Assets/Images/fansocialreal.png",
+                    img2: "Assets/Images/fansocialreal.png",
                     index: 3,
                     isSelected: (selectedIndex == 3),
                     onTap: handleItemSelected
