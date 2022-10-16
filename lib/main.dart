@@ -389,7 +389,7 @@ bool volumeState =false;
                   child:   Padding(
                     padding: EdgeInsets.only(left:18.0,bottom: 15),
 
-                    child: Text("Cameo",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
+                    child: Text("FanSocial",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
                   ),
                 ),
 
