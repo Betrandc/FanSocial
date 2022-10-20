@@ -53,8 +53,62 @@ class _ItemsListState extends State<ItemsList> {
                     ),)
                 ) ,
                     ),
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
-                   VerticalScrollingItemList(deviceheight),
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                 
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                  cardListItemsTitle("Comedian", "seeall"),
+                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
                  
                   ],
                 ),
@@ -83,28 +137,32 @@ class _ItemsListState extends State<ItemsList> {
     );
   }
   Widget cardListItems(String name,occupation, int amount, String img){ 
-    return Container(
-      margin: const EdgeInsets.only(left: 10),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          
-        GestureDetector(
-          onTap: (){
-       navigationFunction(context, SpecificPerson());
-          },
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(img,width: 130,height: 170,fit: BoxFit.fill,)),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top:8.0),
-          child: Text(name,style: TextStyle(color: Colors.white),),
-        ),
-        Text(occupation,style: const TextStyle(color: Colors.white),),
-        Text("${amount.toString()} XAF",style:const TextStyle(color: Colors.white),)
-      ],),
+    return ConstrainedBox(
+      constraints: BoxConstraints(),
+      child: Container(
+        margin: const EdgeInsets.only(left: 10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            
+          GestureDetector(
+            onTap: (){
+         navigationFunction(context, SpecificPerson());
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(img,width: 200,height: 200,fit: BoxFit.fill,)),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top:8.0),
+            child: Text(name,style: TextStyle(color: Colors.white),),
+          ),
+          Text(occupation,style: const TextStyle(color: Colors.white),),
+          Text("${amount.toString()} XAF",style:const TextStyle(color: Colors.white),)
+        ],),
+      ),
     );
   }
 
@@ -112,10 +170,10 @@ class _ItemsListState extends State<ItemsList> {
 
  Widget horizontalSCrollingOfItems(String img){
     return SizedBox(
-      height: 250,
+      height: 270,
       // width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-        shrinkWrap: false,
+        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) => cardListItems("Jean Marie","Programmer",1200, img)),
@@ -125,108 +183,12 @@ class _ItemsListState extends State<ItemsList> {
  Widget VerticalScrollingItemList(deviceheight) {
     return  Container(
       height: deviceheight,
-      child: Expanded(
-                        child: SingleChildScrollView(
-                          child: Column(children: [
-                                  
-                                  cardListItemsTitle("Features", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/patient.jpg'),
-                                   ),
-
-                                    
-                                    cardListItemsTitle("New&Noteworthy", "see all"),
-                                  
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p2 (2).jpg'),
-                                   ),
-
-
-                                    cardListItemsTitle("For Business", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
-                                   ),
-
-                                    cardListItemsTitle("Actors", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
-                                   ),
-
-                                    cardListItemsTitle("Commedians", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/complaint.jpg'),
-                                   ),
-                                    cardListItemsTitle("Animal", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
-                                   ),
-
-
-                                   cardListItemsTitle("Back for more", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/patient.jpg'),
-                                   ),
-
-
-                                    cardListItemsTitle("Reality TV", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
-                                   ),
-
-
-                                    cardListItemsTitle("Athletes", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
-                                   ),
-
-
-
-                                    cardListItemsTitle("Musicians", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p2 (2).jpg'),
-                                   ),
-
-
-                                    cardListItemsTitle("Queer Voices", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p15.jpg'),
-                                   ),
-
-
-                                    cardListItemsTitle("Creators", "see all"),
-                                  // cardListItems(),
-                                   Padding(
-                                     padding: const EdgeInsets.only(left:15.0,bottom: 10),
-                                     child: horizontalSCrollingOfItems('Assets/Images/p3.jpg'),
-                                   ),
-                                    SizedBox(
-                    height: deviceheight/4,
-                    width: deviceheight,
-                   )
-                          ],),
-                        ),
-                      ),
+      child:Column(
+        children: [
+          
+          horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+        ],
+      )
     );
 
   }

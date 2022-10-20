@@ -1,10 +1,11 @@
 // 
 import 'dart:async';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled/Screens/Dashboard.dart';
 import 'package:video_player/video_player.dart';
+import 'Screens/Invite_vip.dart';
 import 'Screens/Login.dart';
    bool _isRadioButtontapped=false;
 void main() => runApp(const MyApp());
@@ -35,15 +36,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
- var SplashTextScren =GoogleFonts.medulaOne(
-    fontSize:35,
-    color:Colors.white,
-    fontWeight: FontWeight.bold,
-    decoration:TextDecoration.none,
-    
-    letterSpacing: 2,
-  );
-
+ 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
@@ -72,14 +65,14 @@ delayFunction() async{
     return  SafeArea(child: Scaffold(
       backgroundColor: Colors.black,
       body: Center(
-        child: Text("FanSocial",style: GoogleFonts.medulaOne(
-    fontSize:35,
-    color:Colors.white,
-    fontWeight: FontWeight.bold,
-    decoration:TextDecoration.none,
-    
-    letterSpacing: 2,
-  ),
+        child: Text("FanSocial",
+        style: TextStyle(
+          fontFamily: "Gliscor Gothic Regular",
+        color: Colors.white,
+        fontWeight: FontWeight.bold,
+        decoration: TextDecoration.none,
+        fontSize: 30
+        )
       ),
     )));
   }
@@ -116,21 +109,22 @@ late  VideoPlayerController _controller;
 @override
   void initState() {
     
-    _controller=VideoPlayerController.asset("Assets/Images/ade.mp4",
-    )
+// _controller=VideoPlayerController.asset("Assets/Images/ade.mp4",
+//     )
     
-    ..initialize().then((_){
-        _controller.play();
-        _controller.setVolume(0.0);
-      _controller.setLooping(true);
-      setState(() {
+//     ..initialize().then((_){
+//         _controller.play();
+//         _controller.setVolume(0.0);
+//       _controller.    setLooping(true);
+      
+//       // setState(() {
         
-      });
+//       // });
 
-      _controller.addListener(() {
-      setState(() {});
-    });
-    });
+//       _controller.addListener(() {
+//       setState(() {});
+//     });
+//     });
     // delayFunction();
     super.initState();
   
@@ -144,6 +138,7 @@ late  VideoPlayerController _controller;
     super.dispose();
   }
 Widget fullScreenVideo({required Widget child, required double deviceheight,required double devicewidth}){
+    
     
     return FittedBox(
       fit: BoxFit.cover,
@@ -162,24 +157,31 @@ bool volumeState =false;
       child: Stack(
 
         children: [ 
-         Positioned(
+        //  Positioned(
         
-           child: SizedBox(
-            width:devicewidth,
-             height: deviceheight,
-            child: AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: fullScreenVideo (
-                child: VideoPlayer(_controller),deviceheight: devicewidth,devicewidth: devicewidth))),
-         ),
+        //    child: SizedBox(
+        //     width:devicewidth,
+        //      height: deviceheight,
+        //     child: AspectRatio(
+        //       aspectRatio: _controller.value.aspectRatio,
+        //       child: fullScreenVideo (
+        //         child: VideoPlayer(_controller),deviceheight: devicewidth,devicewidth: devicewidth))),
+        //  ),
 
 
               Positioned(
-            top: deviceheight/12,
-            left: devicewidth/4+30,
+            top: 25,
+            left: devicewidth/3+7,
             // right:devicewidth/3+50 ,
 
-            child: Center(child: Text("FanSocial",style: SplashTextScren,))),
+            child: Center(child: Text("FanSocial",
+            style: TextStyle(
+              fontFamily: "Gliscor Gothic Regular",
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.none,
+              fontSize: 35
+              )))),
 
           Container(margin: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
@@ -203,7 +205,7 @@ bool volumeState =false;
                         _controller.setVolume(0.0);
                       }
                                  },
-                                 child: !volumeState? Icon(Icons.volume_off):Icon(Icons.volume_up),
+                                 child: volumeState? Image.asset("Assets/Images/volume_up.png",width: 20,color: Colors.white,):Image.asset("Assets/Images/volume_down.png",width: 20,color: Colors.white,),
                                ),
                    ),
                  ),
@@ -220,7 +222,9 @@ bool volumeState =false;
               const  Padding(
                  padding: EdgeInsets.only(top:38.0,bottom: 18.0),
                  child: Center(
-                  child: Text("VIP invite",style: TextStyle(fontSize: 15,color: Colors.white,decoration: TextDecoration.none),),
+                  child: Text("Talent sign up",
+                  style: TextStyle(fontSize: 15,
+                  color: Colors.white,decoration: TextDecoration.underline),),
                  ),
                )
             
@@ -249,7 +253,8 @@ bool volumeState =false;
               //when each of the button is clicked, the bottom sheet showe appear
 
               onPressed: () {
-
+                    
+                   
                 showModalBottomSheet<void>(
                   context: context,
                   builder: (BuildContext context) {
@@ -311,6 +316,8 @@ bool volumeState =false;
                             Navigator.of(context).pop();
 
                             showModalBottomSheet(
+                              isDismissible: true,
+                              enableDrag: false,
                               isScrollControlled: true,
                               shape:const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.vertical(
@@ -327,7 +334,19 @@ bool volumeState =false;
                                  child: Text("Continue with email",style: TextStyle(color:Colors.white),),
                                ),
                              ),
-                           )   
+                           ),
+
+                           // THI S IF FRO THE VIP TEXT ON THE BOTTOM SHEET FOR SIGN UP FUNCTION
+                           
+
+                           InkWell(
+                            onTap:(){
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>INVITe_VIP()));
+                            },
+
+                              child:Text("VIP INVITE")
+                           ),
+                     
                           ],
                         ),
                       ),
@@ -438,7 +457,7 @@ bool volumeState =false;
            const  Padding(
                padding:  EdgeInsets.only(top:22.0,left: 18),
                
-               child: Text("By signing up you agree to Cameo's",
+               child: Text("By signing up you agree to FanSocial's",
                
                style: TextStyle(color:Color.fromARGB(255, 104, 103, 103),fontSize: 15)),
 
@@ -473,7 +492,7 @@ bool volumeState =false;
                    alignment: Alignment.topLeft,
                   child:   Padding(
                     padding: EdgeInsets.only(left:18.0,bottom: 20),
-                    child: Text("Cameo",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
+                    child: Text("FanSocial",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
                   ),
                 ),
                  
@@ -482,30 +501,25 @@ bool volumeState =false;
             
               //THID IS THE ANIMATION TEXT THAT APPEARS IN THE SIGNUP 
               //BOTTOM SHEET WHEN EVER THE SIGN UP BUTTON IS CLICKED
-
-            istimerText?
-
-               const  Align(
-                   alignment: Alignment.topLeft,
-                   
-                  child:   Padding(
-                    padding: EdgeInsets.only(left:18.0,bottom: 20),
-                    child: Text("Right this way.",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold),),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: AnimatedTextKit(
+                                animatedTexts: [
+                                 
+                                 RotateAnimatedText(
+                """The best fan 
+                    experience on earth""",
+                    textStyle: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold)),
+                                  RotateAnimatedText("Right this way",textStyle: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold)),
+                                ],
+                                
+                                totalRepeatCount: 1,
+                                pause: const Duration(milliseconds: 1000),
+                                displayFullTextOnTap: true,
+                                stopPauseOnTap: true,
+                              ),
                   ),
-                )
-                
-                :const  Align(
-                   alignment: Alignment.topLeft,
-
-                  child:   Padding(
-                    padding: EdgeInsets.only(left:18.0,bottom: 20),
-
-                    child: Text("Right fans.",style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold),),
-                  ),
-                ),
+                                      
 
 
                    const Center(

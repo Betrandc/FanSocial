@@ -26,18 +26,16 @@ class Inbox extends StatelessWidget {
                       Stack(
                           children: [
                             Image.asset("Assets/Images/bell.png",width: 20,color: Colors.white,),
-                            Container(
-                              margin: EdgeInsets.only(left: 6,bottom:3 ),
-                              child: Positioned(
-                                top: 12,
-                                child: Card(
-                                color: Color(0xFFb20257),
-                                child: SizedBox(
-                                  height: 13,
-                                  width: 13,
-                                  child:Center(child: Text("120",style: TextStyle(fontSize: 7,color: Colors.white),)) ),
-                              )),
-                            )
+                            Positioned(
+                              top: -7,
+                              left: 4,
+                              child: Card(
+                              color: Color(0xFFb20257),
+                              child: SizedBox(
+                                height: 13,
+                                width: 13,
+                                child:Center(child: Text("120",style: TextStyle(fontSize: 7,color: Colors.white),)) ),
+                            ))
                           ],
                         ),
                       ],

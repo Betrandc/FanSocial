@@ -62,10 +62,10 @@ class NavigationBarItems extends StatelessWidget {
             
             Stack(children:[ 
                
-               Image.asset(!isSelected?img:img2,width: 30,color:!isSelected?  Color.fromARGB(255, 104, 103, 103): Colors.white,),
+               Image.asset(!isSelected?img:img2,width:25,color:!isSelected?  Color.fromARGB(255, 104, 103, 103): Colors.white,),
               if(lable=="inbox")  
                  Padding(
-                   padding: const EdgeInsets.only(left:18.0,bottom:7),
+                   padding: const EdgeInsets.only(left:14.0),
                    child: Card(
                     shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(3)),
                      color: Color(0xFFb20257),
