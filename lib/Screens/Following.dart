@@ -12,12 +12,15 @@ class Following extends StatelessWidget {
         //  crossAxisAlignment: CrossAxisAlignment.center,
         
         children:[
+
+                 
+
                  Padding(
                   padding: const EdgeInsets.all(18.0),
                   child: SizedBox(
                     child: Row(
                       
-                      children:const [
+                      children: [
                         Text("Following",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 27),),
                        
                       ],
@@ -33,6 +36,9 @@ class Following extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                     Center(
+                      child: Image.asset("Assets/Images/add_follow.png",width: 50,color: Color.fromARGB(255, 104, 103, 103).withOpacity(0.4),),
+                  ),
                     
             Text("Follow your faves",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color:Colors.white),),
              Text("To get access to exclusive content,",style: TextStyle(color:Colors.white),),

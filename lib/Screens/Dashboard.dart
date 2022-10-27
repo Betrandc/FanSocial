@@ -55,7 +55,7 @@ Profile()
            
               SafeArea(
                 child: SizedBox(
-                   height: deviceheight-(deviceheight/8),
+                   height: deviceheight-(deviceheight/7),
                         width: devicewidth,
                   child: ValueListenableBuilder(
                     valueListenable: pageindex,
@@ -65,11 +65,13 @@ Profile()
                   ),
                 ),
               ),
+
+            
             ],
           ),
         ),
         bottomNavigationBar: BottomNavigation(
-          
+       
           onItemsSelected: (i) {
           pageindex.value = i;
           pagenameHandler(i);
@@ -98,62 +100,66 @@ bool _isfavouriteTap= false;
     });
     widget.onItemsSelected(index);
   }
-
+ 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Color.fromARGB(255, 29, 28, 28),  
-      elevation: 0,
-      margin: EdgeInsets.zero,
-      child: SafeArea(
-          top: false,
-          bottom: true,
+    return SafeArea(
+      top: false,
+      bottom: true,
+      child: Container(
+        height: 72,
+        child: Card(
+          color: Color.fromARGB(255, 29, 28, 28),
+          elevation: 0,
+          margin: EdgeInsets.zero,
           child: Padding(
-            padding: const EdgeInsets.only(left: 6, right: 6, top: 10),
-            // color: Colors.red,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                NavigationBarItems(
-                  lable: "Browse",
-                 img: "Assets/Images/onsearch.png",
-                 img2:"Assets/Images/onbrowse.png" ,
-                  index: 0,
-                  isSelected: (selectedIndex == 0),
-                  onTap: handleItemSelected,
-                 
-                ),
-                
-                NavigationBarItems(
-                  lable: "inbox",
-                 img: "Assets/Images/message.png",
-                 img2:"Assets/Images/onmessage.png",
-                  index: 1,
-                  isSelected: (selectedIndex == 1),
-                  onTap: handleItemSelected,
-          
-                ),
-                NavigationBarItems(
-                  lable: "following",
-                  img:"Assets/Images/favorite2.png",
-                  img2: "Assets/Images/onlike.png",
-                  index: 2,
-                  isSelected: (selectedIndex == 2),
-                  onTap: handleItemSelected,
-                             
-                ),
+              padding: const EdgeInsets.only(left: 6, right: 6, top: 10),
+              // color: Colors.red,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  NavigationBarItems(
+                    lable: "Browse",
+                   img: "Assets/Images/onsearch.png",
+                   img2:"Assets/Images/onbrowse.png" ,
+                    index: 0,
+                    isSelected: (selectedIndex == 0),
+                    onTap: handleItemSelected,
+                   
+                  ),
+                  
+                  NavigationBarItems(
+                    lable: "inbox",
+                   img: "Assets/Images/message.png",
+                   img2:"Assets/Images/onmessage.png",
+                    index: 1,
+                    isSelected: (selectedIndex == 1),
+                    onTap: handleItemSelected,
+            
+                  ),
+                  NavigationBarItems(
+                    lable: "following",
+                    img:"Assets/Images/favorite2.png",
+                    img2: "Assets/Images/onlike.png",
+                    index: 2,
+                    isSelected: (selectedIndex == 2),
+                    onTap: handleItemSelected,
+                               
+                  ),
 
-                NavigationBarItems(
-                    lable: "profile",
-                    img: "Assets/Images/fansocialreal.png",
-                    img2: "Assets/Images/fansocialreal.png",
-                    index: 3,
-                    isSelected: (selectedIndex == 3),
-                    onTap: handleItemSelected
-                )
-              ],
+                  NavigationBarItems(
+                      lable: "profile",
+                      img: "Assets/Images/fansocialreal.png",
+                      img2: "Assets/Images/fansocialreal.png",
+                      index: 3,
+                      isSelected: (selectedIndex == 3),
+                      onTap: handleItemSelected
+                  )
+                ],
+              ),
             ),
-          )),
+        ),
+      ),
     );
   }
 }

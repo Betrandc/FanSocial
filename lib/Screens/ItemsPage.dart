@@ -8,10 +8,13 @@ class ItemsList extends StatefulWidget {
   State<ItemsList> createState() => _ItemsListState();
 }
 
+ bool _isSearchSelected= false;
+
 class _ItemsListState extends State<ItemsList> {
   @override
   Widget build(BuildContext context) {
     final double deviceheight=MediaQuery.of(context).size.height;
+     final double devicewidth=MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -19,7 +22,7 @@ class _ItemsListState extends State<ItemsList> {
           
               body: SizedBox(
                 height: deviceheight,
-                child: ListView(
+                child: Column(
                   // crossAxisAlignment: CrossAxisAlignment.start,
                   // mainAxisAlignment: MainAxisAlignment.start,
                   // mainAxisSize: MainAxisSize.max,
@@ -36,79 +39,97 @@ class _ItemsListState extends State<ItemsList> {
                     ),
                   ),
                 ),
-                    Card(
-                      color: Colors.black,
-                      child: Container(
-                        margin: EdgeInsets.only(left: 20,right: 20,bottom: 10),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
+                    Row(
+                      children: [
+                        Card(
+                          color: Colors.black,
+                          child: Container(
+                            width: !_isSearchSelected?devicewidth-(devicewidth/6):devicewidth/2+50,
+                            margin: EdgeInsets.only(left: 20,right: 20,bottom: 10),
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),
                   color:Color.fromARGB(255, 104, 103, 103).withOpacity(0.4) 
                 
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                    
-                    prefixIcon: IconButton(icon: Icon(Icons.search,color: Colors.white,),onPressed: (){},),
-                    border: InputBorder.none,
-                    
-                    ),)
-                ) ,
+                            child: TextField(
+                              onTap: (){
+                                           setState(() {
+                              _isSearchSelected=!_isSearchSelected;
+                          });
+                              },
+                        decoration: InputDecoration(
+                        
+                        hintText: "Try 'Ne-Yo'",
+                        prefixIcon: IconButton(icon: Icon(Icons.search,color: Colors.white,),onPressed: (){},),
+                        border: InputBorder.none,
+                        
+                        ),),
+                          ),
+                        ),
+                      if(_isSearchSelected)
+                        InkWell(
+                          onTap: (){
+                            setState(() {
+                              _isSearchSelected=!_isSearchSelected;
+                            });
+                          },
+                          child: Text("Cancel",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
+                        )
+                      ],
                     ),
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                 Container(
+                  height: deviceheight-(deviceheight/3-13),
+                   child: ListView(
+                    shrinkWrap: true,
+                    children: [
 
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                       cardListItemsTitle("Featured", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                    cardListItemsTitle("New& Noteworthy", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
-                 
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
-
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                    cardListItemsTitle("For Business", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
 
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                    cardListItemsTitle("Comedian", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                      // TRENDING IMAGES HERE
 
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                    cardListItemsTitle("Comedian", ""),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                    cardListItemsTitle("Actores", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   cardListItemsTitle("Comedians", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
-                  cardListItemsTitle("Comedian", "seeall"),
-                 horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   cardListItemsTitle("Animals", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                   cardListItemsTitle("Back for more", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                   cardListItemsTitle("Athletes", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                   cardListItemsTitle("Musicians", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+
+                   cardListItemsTitle("Queer voices", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                   cardListItemsTitle("Reality TV", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+
+                   cardListItemsTitle("Creator", "see all"),
+                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                    ],
+                   ),
+                 )
                  
                   ],
                 ),
@@ -146,21 +167,23 @@ class _ItemsListState extends State<ItemsList> {
           crossAxisAlignment: CrossAxisAlignment.start,
           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            
-          GestureDetector(
-            onTap: (){
-         navigationFunction(context, SpecificPerson());
-            },
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(img,width: 200,height: 200,fit: BoxFit.fill,)),
-          ),
+           
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: Image.asset(img,width: 200,height: 270,fit: BoxFit.fill,)),
           Padding(
             padding: const EdgeInsets.only(top:8.0),
             child: Text(name,style: TextStyle(color: Colors.white),),
           ),
-          Text(occupation,style: const TextStyle(color: Colors.white),),
-          Text("${amount.toString()} XAF",style:const TextStyle(color: Colors.white),)
+          Text(occupation,style: const TextStyle(color:Color.fromARGB(255, 104, 103, 103)),),
+          Row(
+            children: [
+              Text("${amount.toString()} XAF",style:const TextStyle(color: Colors.white),),
+                SizedBox(width: 80,),
+              Icon(Icons.bolt,color:Colors.yellow),
+              Text("24hr",style:const TextStyle(color: Colors.white))
+            ],
+          )
         ],),
       ),
     );
@@ -170,13 +193,17 @@ class _ItemsListState extends State<ItemsList> {
 
  Widget horizontalSCrollingOfItems(String img){
     return SizedBox(
-      height: 270,
+      height:335,
       // width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: 10,
-        itemBuilder: (context, index) => cardListItems("Jean Marie","Programmer",1200, img)),
+        itemBuilder: (context, index) => InkWell(
+          onTap:(){
+            navigationFunction(context, SpecificPerson());
+          },
+          child: cardListItems("Jean Marie","Programmer",1200, img))),
     );
   }
   

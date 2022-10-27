@@ -88,13 +88,14 @@ class MyWelcome extends StatefulWidget {
 
 
 
-class _MyWelcomeState extends State<MyWelcome> {
+class _MyWelcomeState extends State<MyWelcome> with WidgetsBindingObserver {
 
  
  final  TextEditingController emailController = TextEditingController();
  final TextEditingController passwordController =TextEditingController();
+  final TextEditingController fullnameController =TextEditingController();
 
-  bool istimerText =false;
+  bool isplaying =true;
 late  VideoPlayerController _controller;
 
 // delayFunction() async{
@@ -108,23 +109,25 @@ late  VideoPlayerController _controller;
 
 @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
+_controller=VideoPlayerController.asset("Assets/Images/ade.mp4",
+    )
     
-// _controller=VideoPlayerController.asset("Assets/Images/ade.mp4",
-//     )
-    
-//     ..initialize().then((_){
-//         _controller.play();
-//         _controller.setVolume(0.0);
-//       _controller.    setLooping(true);
+    ..initialize().then((_){
+       if(isplaying){
+         _controller.play();
+        _controller.setVolume(0.0);
+      _controller.    setLooping(true);
       
-//       // setState(() {
+       }
+      // setState(() {
         
-//       // });
+      // });
 
-//       _controller.addListener(() {
-//       setState(() {});
-//     });
-//     });
+      _controller.addListener(() {
+      setState(() {});
+    });
+    });
     // delayFunction();
     super.initState();
   
@@ -136,7 +139,32 @@ late  VideoPlayerController _controller;
       _controller.dispose();
      
     super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
   }
+@override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    // TODO: implement didChangeAppLifecycleState
+    super.didChangeAppLifecycleState(state);
+
+    if(state== AppLifecycleState.paused){
+      _controller.pause();
+
+      isplaying=false;
+      print(" THIS IS NOW THE PAUSE STATE OF THE APPLICATION");
+    }
+   else if(state==AppLifecycleState.resumed){
+      isplaying=true;
+      _controller.play();
+      print(" this is  the resume state fo the application");
+    }
+    else if(state==AppLifecycleState.detached){
+      _controller.pause();
+
+      isplaying=false;
+      print("this is the detached state fo the application");
+    }
+  }
+  
 Widget fullScreenVideo({required Widget child, required double deviceheight,required double devicewidth}){
     
     
@@ -157,16 +185,16 @@ bool volumeState =false;
       child: Stack(
 
         children: [ 
-        //  Positioned(
+         Positioned(
         
-        //    child: SizedBox(
-        //     width:devicewidth,
-        //      height: deviceheight,
-        //     child: AspectRatio(
-        //       aspectRatio: _controller.value.aspectRatio,
-        //       child: fullScreenVideo (
-        //         child: VideoPlayer(_controller),deviceheight: devicewidth,devicewidth: devicewidth))),
-        //  ),
+           child: SizedBox(
+            width:devicewidth,
+             height: deviceheight,
+            child: AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: fullScreenVideo (
+                child: VideoPlayer(_controller),deviceheight: devicewidth,devicewidth: devicewidth))),
+         ),
 
 
               Positioned(
@@ -183,7 +211,9 @@ bool volumeState =false;
               fontSize: 35
               )))),
 
-          Container(margin: const EdgeInsets.symmetric(horizontal: 30),
+          Container(
+            
+            margin: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
             
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -197,13 +227,7 @@ bool volumeState =false;
                      child: FloatingActionButton(
                       backgroundColor: Color.fromARGB(255, 31, 30, 30).withOpacity(0.5),
                                  onPressed: (){
-                      volumeState=!volumeState;
-                      if(volumeState){
-                        _controller.play();
-                        _controller.setVolume(1.0);
-                      }else{
-                        _controller.setVolume(0.0);
-                      }
+                                     _controller.setVolume(1);
                                  },
                                  child: volumeState? Image.asset("Assets/Images/volume_up.png",width: 20,color: Colors.white,):Image.asset("Assets/Images/volume_down.png",width: 20,color: Colors.white,),
                                ),
@@ -226,11 +250,7 @@ bool volumeState =false;
                   style: TextStyle(fontSize: 15,
                   color: Colors.white,decoration: TextDecoration.underline),),
                  ),
-               )
-            
-              ],
-            ),
-          ),
+               )])),
         ],
       ),
     );
@@ -254,7 +274,7 @@ bool volumeState =false;
 
               onPressed: () {
                     
-                   
+                    _controller.setVolume(0.0);
                 showModalBottomSheet<void>(
                   context: context,
                   builder: (BuildContext context) {
@@ -507,20 +527,24 @@ bool volumeState =false;
                                 animatedTexts: [
                                  
                                  RotateAnimatedText(
-                """The best fan 
+                       """The best fan 
                     experience on earth""",
                     textStyle: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold)),
-                                  RotateAnimatedText("Right this way",textStyle: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold)),
+                                 
+
+                                 
                                 ],
                                 
-                                totalRepeatCount: 1,
+                                totalRepeatCount: 2,
                                 pause: const Duration(milliseconds: 1000),
-                                displayFullTextOnTap: true,
-                                stopPauseOnTap: true,
+                                displayFullTextOnTap: false,
+                                stopPauseOnTap: false,
                               ),
                   ),
-                                      
 
+                   Text("Right this way",style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.bold)),
+                                      
+                 
 
                    const Center(
                       child: CircleAvatar(
@@ -542,9 +566,9 @@ bool volumeState =false;
                    )),
 
 
-              inputLoginOrSignupcredentials(context, emailController, false,"Full Name",false),
-             inputLoginOrSignupcredentials(context, passwordController, true,"Username",false),
-              inputLoginOrSignupcredentials(context, passwordController, true,"Email",false),
+              inputLoginOrSignupcredentials(context, fullnameController, false,"Full Name",false),
+              inputLoginOrSignupcredentials(context, passwordController, true,"Username",false),
+              inputLoginOrSignupcredentials(context, emailController, true,"Email",false),
 
                const Divider(height: 5,),
 
@@ -646,15 +670,10 @@ bool volumeState =false;
               obscureText: password,
               controller: controller,
               decoration: InputDecoration(
-               focusColor: Colors.white,
+               fillColor: Colors.white,
             
              
-              border: OutlineInputBorder(
-               
-                borderRadius: BorderRadius.circular(12),
-
-                
-                )
+              border:  InputBorder.none,
             ),
     ),
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './Dashboard.dart';
 
 class Inbox extends StatelessWidget {
   const Inbox({Key? key}) : super(key: key);
@@ -56,7 +57,9 @@ class Inbox extends StatelessWidget {
                     const  Text("just click on profile to chate or ",style: TextStyle( color: Color.fromARGB(255, 100, 99, 99), ),),
                      const Text("find more people",style: TextStyle(     color: Color.fromARGB(255, 100, 99, 99), ),),
                       InkWell(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context,MaterialPageRoute(builder:(context)=>UserDashboard()));
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const[
