@@ -133,14 +133,7 @@ _controller=VideoPlayerController.asset("Assets/Images/ade.mp4",
   
   }
 
- @override
-  void dispose() {
-    _controller.pause();
-      _controller.dispose();
-     
-    super.dispose();
-    WidgetsBinding.instance.removeObserver(this);
-  }
+
 @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     // TODO: implement didChangeAppLifecycleState
@@ -256,6 +249,14 @@ bool volumeState =false;
     );
   }
 
+ @override
+  void dispose() {
+    _controller.pause();
+      _controller.dispose();
+     
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
    Widget signup_and_Login_Button(BuildContext context,String title){
 
     return Container(
@@ -287,6 +288,7 @@ bool volumeState =false;
                       child: Center(
                       
                         child: Column(
+                          
                           mainAxisAlignment: MainAxisAlignment.start,
                         
                           children: <Widget>[

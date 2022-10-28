@@ -227,7 +227,7 @@ bool displayLength=false;
           )),
        
         bottomNavigationBar: Container(
-           color: Color.fromARGB(255, 29, 28, 28), 
+           color: Color.fromARGB(255, 29, 28, 28),  
           height: deviceheight/8,
           width: devicewidth,
           child: Column(
