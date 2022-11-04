@@ -8,6 +8,7 @@ import 'package:untitled/Screens/Profile.dart';
 
 import './Bottomnavigator.dart';
 
+
 class UserDashboard extends StatelessWidget {
   UserDashboard({
     Key? key,
@@ -43,17 +44,18 @@ Profile()
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.black,
-        body: SizedBox(
-          height: deviceheight,
-          width: devicewidth,
+        body: InkWell(
+          onTap: (){},
           child: Column(
-              // crossAxisAlignment: CrossAxisAlignment.start,
-              //       mainAxisAlignment: MainAxisAlignment.start,
-              //       mainAxisSize: MainAxisSize.max,
+              
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.min,
             children: [
               
            
-              SafeArea(
+          Column(
+            children: [
+                  SafeArea(
                 child: SizedBox(
                    height: deviceheight-(deviceheight/7),
                         width: devicewidth,
@@ -65,17 +67,20 @@ Profile()
                   ),
                 ),
               ),
-
+            ],
+          ),
+        
+       
             
             ],
           ),
-        ),
-        bottomNavigationBar: BottomNavigation(
-       
+        ), 
+        bottomNavigationBar:           BottomNavigation(
+               
           onItemsSelected: (i) {
           pageindex.value = i;
           pagenameHandler(i);
-        }),
+          }),
       ),
     );
   }
@@ -120,8 +125,8 @@ bool _isfavouriteTap= false;
                 children: [
                   NavigationBarItems(
                     lable: "Browse",
-                   img: "Assets/Images/onsearch.png",
-                   img2:"Assets/Images/onbrowse.png" ,
+                   icon: Icons.search_outlined,
+                   icon2: Icons.search,
                     index: 0,
                     isSelected: (selectedIndex == 0),
                     onTap: handleItemSelected,
@@ -130,8 +135,8 @@ bool _isfavouriteTap= false;
                   
                   NavigationBarItems(
                     lable: "inbox",
-                   img: "Assets/Images/message.png",
-                   img2:"Assets/Images/onmessage.png",
+                   icon:Icons.inbox_outlined ,
+                   icon2: Icons.inbox,
                     index: 1,
                     isSelected: (selectedIndex == 1),
                     onTap: handleItemSelected,
@@ -139,8 +144,8 @@ bool _isfavouriteTap= false;
                   ),
                   NavigationBarItems(
                     lable: "following",
-                    img:"Assets/Images/favorite2.png",
-                    img2: "Assets/Images/onlike.png",
+                    icon:Icons.favorite_outline ,
+                    icon2: Icons.favorite,
                     index: 2,
                     isSelected: (selectedIndex == 2),
                     onTap: handleItemSelected,
@@ -149,8 +154,8 @@ bool _isfavouriteTap= false;
 
                   NavigationBarItems(
                       lable: "profile",
-                      img: "Assets/Images/fansocialreal.png",
-                      img2: "Assets/Images/fansocialreal.png",
+                      icon: Icons.person,
+                      icon2: Icons.person,
                       index: 3,
                       isSelected: (selectedIndex == 3),
                       onTap: handleItemSelected

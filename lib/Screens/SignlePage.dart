@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 
 class SpecificPerson extends StatefulWidget {
-  const SpecificPerson({Key? key}) : super(key: key);
-
+   SpecificPerson({Key? key,required this.personsImages}) : super(key: key);
+  String personsImages;
   @override
   State<SpecificPerson> createState() => _SpecificPersonState();
 }
@@ -30,29 +30,31 @@ bool displayLength=false;
         backgroundColor: const Color.fromARGB(255, 27, 27, 27), 
         
         actions: [
-          Container(
+            Container(
              width: 75,
             margin:  EdgeInsets.only(top:18.0,right: 17,bottom: 12),
-            child: RaisedButton(
-                color:Color.fromARGB(255, 104, 103, 103).withOpacity(0.4) ,
+            child: MaterialButton(
+              
+                // color:Color.fromARGB(255, 104, 103, 103).withOpacity(0.4) ,
               onPressed: (){},
               child: Text("Follow")),
           ),
           Container(
             width: 50,
           margin:  EdgeInsets.only(right:10.0,top:18.0,bottom: 12),
-            child: RaisedButton(
-              color:Color.fromARGB(255, 104, 103, 103).withOpacity(0.4) ,
+            child: MaterialButton( 
               onPressed: (){},
               child: Icon(Icons.upload)),
           ),
+
         ]),
         body: SizedBox(
           child: SingleChildScrollView(
             child: Column(
                   children: [
-                  horizontalScrollableItems(),
+                  horizontalScrollableItems(widget.personsImages),
 
+               
                   SizedBox(
                     width: devicewidth,
                     child: Padding(
@@ -84,10 +86,10 @@ bool displayLength=false;
                               width: 2
                             )
                           ),
-                          child: const  CircleAvatar(
+                          child:   CircleAvatar(
                              
                               radius: 20,
-                            backgroundImage: AssetImage("Assets/Images/patient.jpg"),
+                            backgroundImage: AssetImage(widget.personsImages),
                            ),
                         )
                         ],
@@ -265,7 +267,7 @@ bool displayLength=false;
                         width: devicewidth/3-20,
                         child: MaterialButton(onPressed: (){},child: Row(
                           children: [
-                            Image.asset("Assets/Images/chat.png",width: 15,color:Color.fromARGB(255, 238, 43, 108) ),
+                            Image.asset("Assets/Images/chat.png",width: 15,color:Colors.white ),
                             Padding(
                               padding: const EdgeInsets.only(left:8.0),
                               child: Text("chat",style:TextStyle(color: Colors.white)),
@@ -305,7 +307,7 @@ bool displayLength=false;
     );
   }
 
- Widget horizontalScrollableItems(){
+ Widget horizontalScrollableItems(String img){
         return SizedBox(
           height: 250,
 
@@ -319,7 +321,7 @@ bool displayLength=false;
                 margin: const EdgeInsets.only(left: 12,top: 10),
                 child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset("Assets/Images/p3.jpg",width: 190,height: 250,fit: BoxFit.fill,)),
+                child: Image.asset(img,width: 190,height: 250,fit: BoxFit.fill,)),
               ),),))),
         );
   }

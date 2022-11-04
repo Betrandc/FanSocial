@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:untitled/Screens/SignlePage.dart';
 
 class ItemsList extends StatefulWidget {
@@ -50,7 +51,7 @@ class _ItemsListState extends State<ItemsList> {
                   color:Color.fromARGB(255, 104, 103, 103).withOpacity(0.4) 
                 
                   ),
-                            child: TextField(
+                            child: TextFormField(
                               onTap: (){
                                            setState(() {
                               _isSearchSelected=!_isSearchSelected;
@@ -83,50 +84,50 @@ class _ItemsListState extends State<ItemsList> {
                     children: [
 
                        cardListItemsTitle("Featured", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/business.webp"),
 
                     cardListItemsTitle("New& Noteworthy", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/ator5.jpg"),
 
                     cardListItemsTitle("For Business", "see all"),
                    horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
 
                     cardListItemsTitle("Comedian", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/comedy3.jpg"),
 
                       // TRENDING IMAGES HERE
 
                     cardListItemsTitle("Comedian", ""),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/actor1.jpg"),
 
                     cardListItemsTitle("Actores", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/actor2.jpg"),
 
                    cardListItemsTitle("Comedians", "see all"),
                    horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
                    cardListItemsTitle("Animals", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/comedy.jpg"),
 
                    cardListItemsTitle("Back for more", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/comedy1.jpg"),
 
                    cardListItemsTitle("Athletes", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/athletes.jpg"),
 
                    cardListItemsTitle("Musicians", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/actor2.jpg"),
 
 
                    cardListItemsTitle("Queer voices", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/actor1.jpg"),
 
                    cardListItemsTitle("Reality TV", "see all"),
                    horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
 
                    cardListItemsTitle("Creator", "see all"),
-                   horizontalSCrollingOfItems("Assets/Images/p3.jpg"),
+                   horizontalSCrollingOfItems("Assets/Images/business2.jpg"),
                     ],
                    ),
                  )
@@ -170,7 +171,7 @@ class _ItemsListState extends State<ItemsList> {
            
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(img,width: 200,height: 270,fit: BoxFit.fill,)),
+            child: Image.asset(img, width:230,height: 240,fit: BoxFit.fill,)),
           Padding(
             padding: const EdgeInsets.only(top:8.0),
             child: Text(name,style: TextStyle(color: Colors.white),),
@@ -201,7 +202,7 @@ class _ItemsListState extends State<ItemsList> {
         itemCount: 10,
         itemBuilder: (context, index) => InkWell(
           onTap:(){
-            navigationFunction(context, SpecificPerson());
+            Get.to(SpecificPerson(personsImages: img,));
           },
           child: cardListItems("Jean Marie","Programmer",1200, img))),
     );

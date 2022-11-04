@@ -4,8 +4,8 @@ class NavigationBarItems extends StatelessWidget {
   NavigationBarItems({
     Key? key,
     required this.lable,
-     required this.img,
-     required this.img2,
+   required this.icon2,
+     required this.icon,
     required this.index,
     this.isSelected = false,
     required this.onTap,
@@ -14,12 +14,12 @@ class NavigationBarItems extends StatelessWidget {
   }) : super(key: key);
 
   final String lable;
-  
+  final IconData icon2;
+  final IconData icon;
   final int index;
   final bool isSelected;
   final ValueChanged<int> onTap;
-  String img;
-  String img2;
+  
 
 
 
@@ -44,7 +44,7 @@ class NavigationBarItems extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
               
-            
+           
 
             lable=="profile"?
            Container(
@@ -57,15 +57,17 @@ class NavigationBarItems extends StatelessWidget {
             )),
             child: Padding(
               padding: const EdgeInsets.all(4.0),
-              child: Image.asset(img,width: 15 ),
+              child: Image.asset("Assets/Images/fansocialreal.png",width: 15 ),
             )):
             
             Stack(children:[ 
+            
                
-               Image.asset(!isSelected?img:img2,width:25,color:!isSelected?  Color.fromARGB(255, 104, 103, 103): Colors.white,),
+                !isSelected?Icon(icon ,color: Color.fromARGB(255, 104, 103, 103),):Icon(icon2,color: Colors.white, size:lable=="Browse"? 30:25,),
               if(lable=="inbox")  
-                 Padding(
-                   padding: const EdgeInsets.only(left:14.0),
+                 Positioned(
+                  top: -5,
+                  left: 9,
                    child: Card(
                     shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(3)),
                      color: Color(0xFFb20257),
