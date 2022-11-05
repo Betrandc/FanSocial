@@ -26,7 +26,7 @@ class Inbox extends StatelessWidget {
                         Text("Inbox",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 27),),
                       Stack(
                           children: [
-                            Image.asset("Assets/Images/bell.png",width: 20,color: Colors.white,),
+                            Icon(Icons.notifications_outlined,color: Colors.white, size: 18,),
                             Positioned(
                               top: -7,
                               left: 4,

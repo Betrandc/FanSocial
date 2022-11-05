@@ -5,6 +5,7 @@ import 'package:untitled/Screens/ChatPage.dart';
 import 'package:untitled/Screens/Following.dart';
 import 'package:untitled/Screens/ItemsPage.dart';
 import 'package:untitled/Screens/Profile.dart';
+import 'package:untitled/Screens/Search_items.dart';
 
 import './Bottomnavigator.dart';
 
@@ -13,12 +14,18 @@ class UserDashboard extends StatelessWidget {
   UserDashboard({
     Key? key,
   }) : super(key: key);
+bool _isInputTapped =false;
 
-  List pages = const [
+ void setIsInputTapped(value){
+    _isInputTapped=value;
+                             }
+
+  List pages =  [
 ItemsList(),
 Inbox(),
 Following(),
-Profile()
+Profile(),
+
 
   ];
   // List pageTitle = const ["Browse", "Inbox", "Following","Profile"];
@@ -31,10 +38,7 @@ Profile()
     pageindex.value = index;
   }
 
-  navigationFunction(BuildContext context, Widget PageName) {
-    return Navigator.push(
-        context, MaterialPageRoute(builder: (context) => PageName));
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +59,8 @@ Profile()
            
           Column(
             children: [
+
+                    // !_isInputTapped?
                   SafeArea(
                 child: SizedBox(
                    height: deviceheight-(deviceheight/7),
@@ -66,7 +72,13 @@ Profile()
                     },
                   ),
                 ),
-              ),
+              )
+              // :ValueListenableBuilder(
+              //       valueListenable: pageindex,
+              //       builder: (context, int value, _) {
+              //         return Search_Single_Item();
+              //       },
+              //     ),,
             ],
           ),
         

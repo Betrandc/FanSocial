@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:untitled/Screens/SignlePage.dart';
 
 class ItemsList extends StatefulWidget {
-  const ItemsList({Key? key}) : super(key: key);
-
+   ItemsList({Key? key}) : super(key: key);
+// ValueChanged<bool> isInputTapped;
   @override
   State<ItemsList> createState() => _ItemsListState();
 }
@@ -70,7 +71,8 @@ class _ItemsListState extends State<ItemsList> {
                         InkWell(
                           onTap: (){
                             setState(() {
-                              _isSearchSelected=!_isSearchSelected;
+                              // widget.isInputTapped(true);
+                              // _isSearchSelected=!_isSearchSelected;
                             });
                           },
                           child: Text("Cancel",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),
