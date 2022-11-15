@@ -3,7 +3,10 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'http://repo1.maven.org/maven2' }
+    jcenter { url "http://jcenter.bintray.com/" }
     }
+
 
     dependencies {
         // classpath 'com.google.gms:google-services:4.3.10'

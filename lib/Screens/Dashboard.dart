@@ -1,11 +1,11 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:untitled/Screens/ChatPage.dart';
-import 'package:untitled/Screens/Following.dart';
-import 'package:untitled/Screens/ItemsPage.dart';
-import 'package:untitled/Screens/Profile.dart';
-import 'package:untitled/Screens/Search_items.dart';
+import 'package:untitled/Screens/Inbox/ChatPage.dart';
+import 'package:untitled/Screens/Follow/Following.dart';
+import 'package:untitled/Screens/Browse/ItemsPage.dart';
+import 'package:untitled/Screens/Profile/Profile.dart';
+import 'package:untitled/Screens/Browse/Search_items.dart';
 
 import './Bottomnavigator.dart';
 
